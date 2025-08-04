@@ -190,6 +190,52 @@
       50% { transform: translate(-20px,-30px) rotate(180deg); }
       100% { transform: translate(0,0) rotate(360deg); }
     }
+    
+    .countdown-container {
+      background: rgba(0,0,0,0.6);
+      border-radius: 20px;
+      padding: 25px;
+      margin: 20px 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 20px rgba(255,105,180,0.2);
+      border: 1px solid rgba(0,0,0,0.8);
+      border-top: 1px solid rgba(255,105,180,0.3);
+    }
+    
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .countdown-item {
+      text-align: center;
+      background: rgba(255,105,180,0.1);
+      border-radius: 15px;
+      padding: 15px 10px;
+      border: 1px solid rgba(255,105,180,0.3);
+    }
+    
+    .countdown-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ff69b4;
+      text-shadow: 0 0 10px rgba(255,105,180,0.5);
+      margin-bottom: 5px;
+    }
+    
+    .countdown-label {
+      font-size: 0.8rem;
+      color: #ffb6c1;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .countdown-title {
+      color: #ffd700;
+      font-family: 'Dancing Script', cursive;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -218,43 +264,74 @@
         <button class="btn" id="next-btn-2">Continue Our Love Story 💕</button>
       </div>
 
-      <!-- Step 3 -->
+      <!-- Step 3 (Mobile Optimized) -->
       <div class="step" id="step3">
-        <h2 class="text-4xl font-bold mb-8 text-gradient">Why You Are My Everything</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-gradient">Why You Are My Everything</h2>
+        <div class="grid grid-cols-1 gap-3 mb-4">
           <div class="reason-card">
-            <div class="emoji">✨</div>
-            <h3 class="text-xl font-bold mb-3">Your Pure Heart</h3>
-            <p class="mb-3">Your kindness and purity reflect the beauty of Islam</p>
-            <div class="islamic-quote">
+            <div class="emoji text-2xl">✨</div>
+            <h3 class="text-base font-bold mb-1">Your Pure Heart</h3>
+            <p class="mb-1 text-xs">Your kindness and purity reflect the beauty of Islam</p>
+            <div class="islamic-quote text-xs">
               "The best among you are those who have the best character"
             </div>
           </div>
           <div class="reason-card">
-            <div class="emoji">😊</div>
-            <h3 class="text-xl font-bold mb-3">Your Beautiful Smile</h3>
-            <p class="mb-3">It brightens my world like the morning sun</p>
-            <div class="islamic-quote">
+            <div class="emoji text-2xl">😊</div>
+            <h3 class="text-base font-bold mb-1">Your Beautiful Smile</h3>
+            <p class="mb-1 text-xs">It brightens my world like the morning sun</p>
+            <div class="islamic-quote text-xs">
               "A smile is charity"
             </div>
           </div>
           <div class="reason-card">
-            <div class="emoji">🌟</div>
-            <h3 class="text-xl font-bold mb-3">Your Faith</h3>
-            <p class="mb-3">Your devotion to Allah inspires me every day</p>
-            <div class="islamic-quote">
+            <div class="emoji text-2xl">🌟</div>
+            <h3 class="text-base font-bold mb-1">Your Faith</h3>
+            <p class="mb-1 text-xs">Your devotion to Allah inspires me every day</p>
+            <div class="islamic-quote text-xs">
               "Indeed, Allah is with those who are patient"
             </div>
           </div>
           <div class="reason-card">
-            <div class="emoji">💝</div>
-            <h3 class="text-xl font-bold mb-3">Your Love</h3>
-            <p class="mb-3">You make every moment feel like paradise</p>
-            <div class="islamic-quote">
+            <div class="emoji text-2xl">💝</div>
+            <h3 class="text-base font-bold mb-1">Your Love</h3>
+            <p class="mb-1 text-xs">You make every moment feel like paradise</p>
+            <div class="islamic-quote text-xs">
               "And among His signs is that He created for you mates"
             </div>
           </div>
         </div>
+        
+        <div class="quote-card mt-3">
+          <div class="islamic-quote text-sm">
+            "O Fatima, you are the most precious thing to me in this world"
+          </div>
+          <div class="arabic-text text-sm">
+            يا فاطمة، أنت أثمن شيء لي في هذا العالم
+          </div>
+          <p class="mt-1 text-xs">- Hazrat Ali (RA) to Fatima (RA)</p>
+        </div>
+        
+        <div class="quote-card mt-2">
+          <div class="islamic-quote text-sm">
+            "Ayesha, you are the love of my heart and the comfort of my soul"
+          </div>
+          <div class="arabic-text text-sm">
+            عائشة، أنت حب قلبي و راحة روحي
+          </div>
+          <p class="mt-1 text-xs">- Prophet Muhammad ﷺ to Ayesha (RA)</p>
+        </div>
+        
+        <div class="quote-card mt-2">
+          <div class="islamic-quote text-sm">
+            "My beloved, you are the light of my eyes and the joy of my heart"
+          </div>
+          <div class="arabic-text text-sm">
+            حبيبتي، أنت نور عيني و فرحة قلبي
+          </div>
+          <p class="mt-1 text-xs">- For my beloved Ammu</p>
+        </div>
+        
         <button class="btn" id="next-btn-3">Discover More Blessings 🌸</button>
       </div>
 
@@ -289,6 +366,27 @@
         <div id="locked-content">
           <div class="emoji">⏳</div>
           <h2 class="text-4xl font-bold mb-8 text-gradient">Locked Until 16 Aug 2025</h2>
+          <div class="countdown-container mb-6">
+            <div class="countdown-title text-xl mb-4">Time Until Your Special Day:</div>
+            <div class="countdown-grid">
+              <div class="countdown-item">
+                <div class="countdown-number" id="days">00</div>
+                <div class="countdown-label">Days</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-number" id="hours">00</div>
+                <div class="countdown-label">Hours</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-number" id="minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-number" id="seconds">00</div>
+                <div class="countdown-label">Seconds</div>
+              </div>
+            </div>
+          </div>
           <p class="text-xl mb-6">Come back on your birthday for a special surprise from your beloved ❤️</p>
         </div>
       </div>
@@ -443,6 +541,39 @@ if (checkBirthday()) {
 } else {
   document.getElementById('birthday-content').style.display = 'none';
   document.getElementById('locked-content').style.display = 'block';
+  
+  // Start countdown timer
+  startCountdown();
+}
+
+// Countdown timer function
+function startCountdown() {
+  const birthday = new Date('2025-08-16T00:00:00');
+  
+  function updateCountdown() {
+    const now = new Date();
+    const timeLeft = birthday - now;
+    
+    if (timeLeft <= 0) {
+      // Birthday has arrived!
+      location.reload(); // Reload to show birthday content
+      return;
+    }
+    
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+    
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+  }
+  
+  // Update countdown every second
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 }
 
 typeWriter(document.querySelector('#intro-text'), "My beloved, my heart's treasure...");
@@ -492,4 +623,4 @@ if (checkBirthday()) {
 }
 </script>
 </body>
-</html>
+</html> 
