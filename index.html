@@ -193,9 +193,9 @@
     
     .countdown-container {
       background: rgba(0,0,0,0.6);
-      border-radius: 20px;
-      padding: 25px;
-      margin: 20px 0;
+      border-radius: 15px;
+      padding: 15px;
+      margin: 15px 0;
       box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 20px rgba(255,105,180,0.2);
       border: 1px solid rgba(0,0,0,0.8);
       border-top: 1px solid rgba(255,105,180,0.3);
@@ -204,31 +204,31 @@
     .countdown-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      margin-top: 15px;
+      gap: 8px;
+      margin-top: 10px;
     }
     
     .countdown-item {
       text-align: center;
       background: rgba(255,105,180,0.1);
-      border-radius: 15px;
-      padding: 15px 10px;
+      border-radius: 10px;
+      padding: 10px 5px;
       border: 1px solid rgba(255,105,180,0.3);
     }
     
     .countdown-number {
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: bold;
       color: #ff69b4;
       text-shadow: 0 0 10px rgba(255,105,180,0.5);
-      margin-bottom: 5px;
+      margin-bottom: 3px;
     }
     
     .countdown-label {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       color: #ffb6c1;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
     
     .countdown-title {
@@ -276,6 +276,59 @@
         padding: 10px 20px !important;
         font-size: 14px !important;
         margin-top: 15px !important;
+      }
+      
+      /* Mobile styles for Step 5 (locked content) */
+      #step5 {
+        padding: 20px !important;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      
+      #step5 .emoji {
+        font-size: 2rem !important;
+        margin-bottom: 15px !important;
+      }
+      
+      #step5 h2 {
+        font-size: 1.25rem !important;
+        margin-bottom: 15px !important;
+      }
+      
+      #step5 .countdown-container {
+        padding: 10px !important;
+        margin: 10px 0 !important;
+        border-radius: 10px !important;
+      }
+      
+      #step5 .countdown-title {
+        font-size: 0.875rem !important;
+        margin-bottom: 10px !important;
+      }
+      
+      #step5 .countdown-grid {
+        gap: 5px !important;
+        margin-top: 8px !important;
+      }
+      
+      #step5 .countdown-item {
+        padding: 8px 3px !important;
+        border-radius: 8px !important;
+      }
+      
+      #step5 .countdown-number {
+        font-size: 1.25rem !important;
+        margin-bottom: 2px !important;
+      }
+      
+      #step5 .countdown-label {
+        font-size: 0.6rem !important;
+        letter-spacing: 0.3px !important;
+      }
+      
+      #step5 p {
+        font-size: 0.875rem !important;
+        margin-bottom: 15px !important;
       }
     }
   </style>
@@ -406,10 +459,10 @@
           <button class="btn" id="confetti-btn">Celebrate Our Love! 🎉</button>
         </div>
         <div id="locked-content">
-          <div class="emoji">⏳</div>
-          <h2 class="text-4xl font-bold mb-8 text-gradient">Locked Until 16 Aug 2025</h2>
-          <div class="countdown-container mb-6">
-            <div class="countdown-title text-xl mb-4">Time Until Your Special Day:</div>
+          <div class="emoji text-3xl">⏳</div>
+          <h2 class="text-2xl font-bold mb-4 text-gradient">Locked Until 16 Aug 2025</h2>
+          <div class="countdown-container mb-4">
+            <div class="countdown-title text-lg mb-3">Time Until Your Special Day:</div>
             <div class="countdown-grid">
               <div class="countdown-item">
                 <div class="countdown-number" id="days">00</div>
@@ -429,7 +482,7 @@
               </div>
             </div>
           </div>
-          <p class="text-xl mb-6">Come back on your birthday for a special surprise from your beloved ❤️</p>
+          <p class="text-lg mb-4">Come back on your birthday for a special surprise from your beloved ❤️</p>
         </div>
       </div>
 
