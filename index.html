@@ -107,9 +107,9 @@
     }
     .quote-card, .reason-card {
       background: rgba(0,0,0,0.6);
-      border-radius: 20px; 
-      padding: 25px; 
-      margin: 15px;
+      border-radius: 15px; 
+      padding: 15px; 
+      margin: 8px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 20px rgba(255,105,180,0.2);
       border: 1px solid rgba(0,0,0,0.8);
       border-top: 1px solid rgba(255,105,180,0.3);
@@ -236,6 +236,48 @@
       font-family: 'Dancing Script', cursive;
       text-align: center;
     }
+    
+    /* Mobile-specific styles for Step 3 */
+    @media (max-width: 768px) {
+      #step3 {
+        padding: 20px !important;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      
+      #step3 .reason-card,
+      #step3 .quote-card {
+        padding: 10px !important;
+        margin: 5px !important;
+        border-radius: 10px !important;
+      }
+      
+      #step3 .emoji {
+        font-size: 1.5rem !important;
+        margin-bottom: 10px !important;
+      }
+      
+      #step3 h3 {
+        font-size: 0.875rem !important;
+        margin-bottom: 5px !important;
+      }
+      
+      #step3 p {
+        font-size: 0.75rem !important;
+        margin-bottom: 5px !important;
+      }
+      
+      #step3 .islamic-quote,
+      #step3 .arabic-text {
+        font-size: 0.75rem !important;
+      }
+      
+      #step3 .btn {
+        padding: 10px 20px !important;
+        font-size: 14px !important;
+        margin-top: 15px !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -266,35 +308,35 @@
 
       <!-- Step 3 (Mobile Optimized) -->
       <div class="step" id="step3">
-        <h2 class="text-2xl font-bold mb-4 text-gradient">Why You Are My Everything</h2>
-        <div class="grid grid-cols-1 gap-3 mb-4">
+        <h2 class="text-xl font-bold mb-3 text-gradient">Why You Are My Everything</h2>
+        <div class="grid grid-cols-1 gap-2 mb-3">
           <div class="reason-card">
-            <div class="emoji text-2xl">✨</div>
-            <h3 class="text-base font-bold mb-1">Your Pure Heart</h3>
+            <div class="emoji text-lg">✨</div>
+            <h3 class="text-sm font-bold mb-1">Your Pure Heart</h3>
             <p class="mb-1 text-xs">Your kindness and purity reflect the beauty of Islam</p>
             <div class="islamic-quote text-xs">
               "The best among you are those who have the best character"
             </div>
           </div>
           <div class="reason-card">
-            <div class="emoji text-2xl">😊</div>
-            <h3 class="text-base font-bold mb-1">Your Beautiful Smile</h3>
+            <div class="emoji text-lg">😊</div>
+            <h3 class="text-sm font-bold mb-1">Your Beautiful Smile</h3>
             <p class="mb-1 text-xs">It brightens my world like the morning sun</p>
             <div class="islamic-quote text-xs">
               "A smile is charity"
             </div>
           </div>
           <div class="reason-card">
-            <div class="emoji text-2xl">🌟</div>
-            <h3 class="text-base font-bold mb-1">Your Faith</h3>
+            <div class="emoji text-lg">🌟</div>
+            <h3 class="text-sm font-bold mb-1">Your Faith</h3>
             <p class="mb-1 text-xs">Your devotion to Allah inspires me every day</p>
             <div class="islamic-quote text-xs">
               "Indeed, Allah is with those who are patient"
             </div>
           </div>
           <div class="reason-card">
-            <div class="emoji text-2xl">💝</div>
-            <h3 class="text-base font-bold mb-1">Your Love</h3>
+            <div class="emoji text-lg">💝</div>
+            <h3 class="text-sm font-bold mb-1">Your Love</h3>
             <p class="mb-1 text-xs">You make every moment feel like paradise</p>
             <div class="islamic-quote text-xs">
               "And among His signs is that He created for you mates"
@@ -302,31 +344,31 @@
           </div>
         </div>
         
-        <div class="quote-card mt-3">
-          <div class="islamic-quote text-sm">
+        <div class="quote-card mt-2">
+          <div class="islamic-quote text-xs">
             "O Fatima, you are the most precious thing to me in this world"
           </div>
-          <div class="arabic-text text-sm">
+          <div class="arabic-text text-xs">
             يا فاطمة، أنت أثمن شيء لي في هذا العالم
           </div>
           <p class="mt-1 text-xs">- Hazrat Ali (RA) to Fatima (RA)</p>
         </div>
         
         <div class="quote-card mt-2">
-          <div class="islamic-quote text-sm">
+          <div class="islamic-quote text-xs">
             "Ayesha, you are the love of my heart and the comfort of my soul"
           </div>
-          <div class="arabic-text text-sm">
+          <div class="arabic-text text-xs">
             عائشة، أنت حب قلبي و راحة روحي
           </div>
           <p class="mt-1 text-xs">- Prophet Muhammad ﷺ to Ayesha (RA)</p>
         </div>
         
         <div class="quote-card mt-2">
-          <div class="islamic-quote text-sm">
+          <div class="islamic-quote text-xs">
             "My beloved, you are the light of my eyes and the joy of my heart"
           </div>
-          <div class="arabic-text text-sm">
+          <div class="arabic-text text-xs">
             حبيبتي، أنت نور عيني و فرحة قلبي
           </div>
           <p class="mt-1 text-xs">- For my beloved Ammu</p>
