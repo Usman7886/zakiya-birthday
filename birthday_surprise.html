@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Beloved Ammu ❤️</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      height: 100vh;
+      background: radial-gradient(circle at top, #ff69b4, #8b0000, #000000);
+      color: white;
+      position: relative;
+      font-size: 15px;
+    }
+    h1, h2, h3 {
+      font-size: 17px !important;
+    }
+    .special-message, .blessing-text, .islamic-quote, .arabic-text, .quote-card p, .reason-card p {
+      font-size: 15px !important;
+    }
+    #app { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    #content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .step {
+      position: absolute;
+      width: 100%;
+      max-width: 900px;
+      padding: 50px;
+      background: rgba(0,0,0,0.85);
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255,105,180,0.3);
+      text-align: center;
+      opacity: 0;
+      transform: scale(0.95) translateY(20px);
+      pointer-events: none;
+      color: #ffb6d9;
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(0,0,0,0.8);
+      border-top: 2px solid rgba(255,105,180,0.4);
+    }
+    .step.active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: all;
+      animation: fadeZoom 1s ease forwards;
+    }
+    @keyframes fadeZoom {
+      0% { opacity: 0; transform: scale(0.95) translateY(20px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .btn {
+      background: linear-gradient(135deg, #000000, #1a1a1a, #ff69b4, #ff1493);
+      color: white; 
+      border: 2px solid rgba(255,105,180,0.3); 
+      padding: 15px 30px; 
+      border-radius: 50px;
+      font-weight: 600; 
+      cursor: pointer; 
+      margin-top: 25px;
+      transition: all 0.4s ease;
+      font-size: 16px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 0 20px rgba(255,105,180,0.3);
+    }
+    .btn:hover { 
+      transform: translateY(-3px); 
+      box-shadow: 0 8px 25px rgba(0,0,0,0.7), 0 0 30px rgba(255,105,180,0.5);
+      background: linear-gradient(135deg, #1a1a1a, #000000, #ff69b4, #ff1493);
+    }
+    .text-gradient { 
+      background: linear-gradient(135deg, #ff69b4, #ff1493, #ffb6c1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: bold; 
+    }
+    .heart-beat { animation: heartbeat 1.5s ease-in-out infinite; }
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.15); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+    .emoji { 
+      font-size: 4rem; 
+      margin-bottom: 25px; 
+      display: inline-block; 
+      filter: drop-shadow(0 0 10px rgba(255,105,180,0.5));
+    }
+    .quote-card, .reason-card {
+      background: rgba(0,0,0,0.6);
+      border-radius: 20px; 
+      padding: 25px; 
+      margin: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 20px rgba(255,105,180,0.2);
+      border: 1px solid rgba(0,0,0,0.8);
+      border-top: 1px solid rgba(255,105,180,0.3);
+      transition: all 0.3s ease;
+    }
+    .quote-card:hover, .reason-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.7), 0 0 30px rgba(255,105,180,0.4);
+      background: rgba(0,0,0,0.8);
+    }
+    .islamic-quote {
+      font-family: 'Amiri', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+    .arabic-text {
+      font-family: 'Amiri', serif;
+      font-size: 1.3rem;
+      color: #ffd700;
+      direction: rtl;
+      margin: 10px 0;
+    }
+    #progress-container {
+      position: fixed; 
+      top: 20px; 
+      left: 50%; 
+      transform: translateX(-50%);
+      width: 80%; 
+      max-width: 500px; 
+      height: 8px;
+      background: rgba(0,0,0,0.6); 
+      border-radius: 4px; 
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,105,180,0.2);
+    }
+    #progress-bar {
+      height: 100%; 
+      width: 0%;
+      background: linear-gradient(90deg, #000000, #1a1a1a, #ff69b4, #ff1493);
+      border-radius: 4px; 
+      transition: width 0.6s ease;
+      box-shadow: 0 0 15px rgba(255,105,180,0.6), 0 0 10px rgba(0,0,0,0.8);
+    }
+    #canvas-container { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      z-index: 1; 
+    }
+    .special-message {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.4rem;
+      color: #ffb6c1;
+      margin: 20px 0;
+      line-height: 1.6;
+    }
+    .blessing-text {
+      font-family: 'Amiri', serif;
+      font-size: 1.2rem;
+      color: #ffd700;
+      margin: 15px 0;
+    }
+    .floating-hearts {
+      position: absolute;
+      font-size: 2rem;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0.8;
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
+      text-shadow: 0 0 15px rgba(255,105,180,0.6);
+    }
+    @keyframes float {
+      0% { transform: translate(0,0) rotate(0deg); }
+      50% { transform: translate(-20px,-30px) rotate(180deg); }
+      100% { transform: translate(0,0) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div id="canvas-container"></div>
+    <div id="progress-container"><div id="progress-bar"></div></div>
+    <div id="content">
+
+      <!-- Step 1 -->
+      <div class="step active" id="step1">
+        <div class="emoji heart-beat">❤️</div>
+        <h1 class="text-5xl md:text-6xl font-bold mb-8 text-gradient">Assalamu Alaikum Ammu</h1>
+        <p class="text-2xl mb-6" id="intro-text"></p>
+        <div class="special-message">
+          "In the name of Allah, the Most Gracious, the Most Merciful"
+        </div>
+        <p class="text-xl mb-8">I've created something very special just for you, my dearest...</p>
+        <button class="btn" id="start-btn">Begin Our Journey ❤️</button>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step" id="step2">
+        <div class="emoji">🎂</div>
+        <h2 class="text-4xl font-bold mb-8 text-gradient">Happy Birthday My Beloved!</h2>
+        <div class="rotating-quote text-xl mb-6"></div>
+        <button class="btn" id="next-btn-2">Continue Our Love Story 💕</button>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step" id="step3">
+        <h2 class="text-4xl font-bold mb-8 text-gradient">Why You Are My Everything</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div class="reason-card">
+            <div class="emoji">✨</div>
+            <h3 class="text-xl font-bold mb-3">Your Pure Heart</h3>
+            <p class="mb-3">Your kindness and purity reflect the beauty of Islam</p>
+            <div class="islamic-quote">
+              "The best among you are those who have the best character"
+            </div>
+          </div>
+          <div class="reason-card">
+            <div class="emoji">😊</div>
+            <h3 class="text-xl font-bold mb-3">Your Beautiful Smile</h3>
+            <p class="mb-3">It brightens my world like the morning sun</p>
+            <div class="islamic-quote">
+              "A smile is charity"
+            </div>
+          </div>
+          <div class="reason-card">
+            <div class="emoji">🌟</div>
+            <h3 class="text-xl font-bold mb-3">Your Faith</h3>
+            <p class="mb-3">Your devotion to Allah inspires me every day</p>
+            <div class="islamic-quote">
+              "Indeed, Allah is with those who are patient"
+            </div>
+          </div>
+          <div class="reason-card">
+            <div class="emoji">💝</div>
+            <h3 class="text-xl font-bold mb-3">Your Love</h3>
+            <p class="mb-3">You make every moment feel like paradise</p>
+            <div class="islamic-quote">
+              "And among His signs is that He created for you mates"
+            </div>
+          </div>
+        </div>
+        <button class="btn" id="next-btn-3">Discover More Blessings 🌸</button>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step" id="step4">
+        <div class="emoji">📸</div>
+        <h2 class="text-4xl font-bold mb-8 text-gradient">Our Precious Memories</h2>
+        <div class="special-message mb-6 rotating-quote"></div>
+        <div class="quote-card">
+          <div class="islamic-quote">
+            "Verily, with hardship comes ease"
+          </div>
+          <div class="arabic-text">
+            فَإِنَّ مَعَ الْعُسْرِ يُسْرًا
+          </div>
+          <p class="mt-4">Through every challenge, your love has been my strength, Ammu.</p>
+        </div>
+        <div class="blessing-text mt-6">
+          "May Allah continue to bless our love and keep us together always"
+        </div>
+        <button class="btn" id="next-btn-4">Your Special Surprise 🎁</button>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="step" id="step5">
+        <div id="birthday-content" style="display: none;">
+          <div class="emoji">🎂</div>
+          <h2 class="text-4xl font-bold mb-8 text-gradient">Happy Birthday Zakiya ❤️</h2>
+          <div class="special-message rotating-quote"></div>
+          <button class="btn" id="confetti-btn">Celebrate Our Love! 🎉</button>
+        </div>
+        <div id="locked-content">
+          <div class="emoji">⏳</div>
+          <h2 class="text-4xl font-bold mb-8 text-gradient">Locked Until 16 Aug 2025</h2>
+          <p class="text-xl mb-6">Come back on your birthday for a special surprise from your beloved ❤️</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<audio autoplay loop id="bg-music" style="display:none;">
+  <source src="https://cdn.pixabay.com/audio/2022/10/09/audio_7bfae14fc7.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Birthday check logic
+function checkBirthday() {
+  const birthday = new Date('2025-08-16');
+  const today = new Date();
+  return today >= birthday;
+}
+
+const container = document.getElementById('canvas-container');
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0x000000, 0);
+container.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 30;
+
+const heartShape = new THREE.Shape();
+heartShape.moveTo(0.5, 0.5);
+heartShape.bezierCurveTo(0.5, 0.5, 1, 0, 0, 0);
+heartShape.bezierCurveTo(-1, 0, -1, 1.5, -1, 1.5);
+heartShape.bezierCurveTo(-1, 2.5, 0.5, 3.5, 0.5, 3.5);
+heartShape.bezierCurveTo(0.5, 3.5, 2, 2.5, 2, 1.5);
+heartShape.bezierCurveTo(2, 1.5, 2, 0, 1, 0);
+heartShape.bezierCurveTo(0.5, 0, 0.5, 0.5, 0.5, 0.5);
+
+const extrudeSettings = { 
+  depth: 0.8, 
+  bevelEnabled: true, 
+  bevelSegments: 5, 
+  bevelSize: 0.3, 
+  bevelThickness: 0.4 
+};
+const heartGeometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
+
+const hearts = [];
+const colors = [0xff69b4, 0xff1493, 0xffb6c1, 0xffd700, 0xff6347, 0x000000, 0x1a1a1a];
+for (let i = 0; i < 25; i++) {
+  const material = new THREE.MeshPhongMaterial({ 
+    color: colors[Math.floor(Math.random()*colors.length)], 
+    transparent: true, 
+    opacity: 0.9,
+    shininess: 100
+  });
+  const heart = new THREE.Mesh(heartGeometry, material);
+  heart.position.x = (Math.random() - 0.5) * 60;
+  heart.position.y = (Math.random() - 0.5) * 60;
+  heart.position.z = (Math.random() - 0.5) * 60;
+  const scale = Math.random()*1.2+0.8;
+  heart.scale.set(scale, scale, scale);
+  heart.userData = {
+    rotationSpeedX: Math.random()*0.02, 
+    rotationSpeedY: Math.random()*0.02,
+    floatSpeed: Math.random()*0.01
+  };
+  scene.add(heart); 
+  hearts.push(heart);
+}
+
+const light = new THREE.PointLight(0xffffff, 1.5);
+light.position.set(10, 10, 10); 
+scene.add(light);
+scene.add(new THREE.AmbientLight(0x202020, 0.4));
+scene.add(new THREE.SpotLight(0xff69b4, 1));
+
+function animate() {
+  requestAnimationFrame(animate);
+  hearts.forEach(h => {
+    h.rotation.x += h.userData.rotationSpeedX; 
+    h.rotation.y += h.userData.rotationSpeedY;
+    h.position.z += Math.sin(Date.now() * h.userData.floatSpeed) * 0.02;
+  });
+  renderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight; 
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+const steps = document.querySelectorAll('.step');
+let currentStep = 0;
+const progressBar = document.getElementById('progress-bar');
+
+function showStep(index) {
+  steps.forEach((s, i) => {
+    s.classList.remove('active');
+    if (i === index) s.classList.add('active');
+  });
+  progressBar.style.width = ((index + 1) / steps.length) * 100 + '%';
+}
+
+function fadeQuotes(stepId, quotes) {
+  const el = document.querySelector(`#${stepId} .rotating-quote`);
+  if (!el) return;
+  let idx = 0;
+  el.textContent = quotes[0];
+  setInterval(() => {
+    idx = (idx + 1) % quotes.length;
+    el.style.opacity = 0;
+    setTimeout(() => {
+      el.textContent = quotes[idx];
+      el.style.opacity = 1;
+    }, 500);
+  }, 3500);
+}
+
+function typeWriter(element, text, delay = 50) {
+  element.textContent = "";
+  let i = 0;
+  const interval = setInterval(() => {
+    element.textContent += text.charAt(i);
+    i++;
+    if (i === text.length) clearInterval(interval);
+  }, delay);
+}
+
+function addFloatingHearts() {
+  const hearts = ['❤️','💕','💖','💝','🖤'];
+  for (let i = 0; i < 25; i++) {
+    setTimeout(() => {
+      const heart = document.createElement('div');
+      heart.className = 'floating-hearts';
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.top = Math.random() * 100 + '%';
+      heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }, i * 200);
+  }
+}
+
+// Initialize birthday content
+if (checkBirthday()) {
+  document.getElementById('birthday-content').style.display = 'block';
+  document.getElementById('locked-content').style.display = 'none';
+} else {
+  document.getElementById('birthday-content').style.display = 'none';
+  document.getElementById('locked-content').style.display = 'block';
+}
+
+typeWriter(document.querySelector('#intro-text'), "My beloved, my heart's treasure...");
+
+document.getElementById('start-btn').addEventListener('click', () => {
+  addFloatingHearts();
+  currentStep = 1; showStep(currentStep);
+  fadeQuotes('step2', [
+    "Every day with you is a gift from Allah.",
+    "You are my answered dua, my beloved Ammu.",
+    "Alhamdulillah for you."
+  ]);
+});
+
+document.getElementById('next-btn-2').addEventListener('click', () => { 
+  currentStep = 2; showStep(currentStep); 
+});
+
+document.getElementById('next-btn-3').addEventListener('click', () => { 
+  currentStep = 3; showStep(currentStep); 
+  fadeQuotes('step4', [
+    "Every moment with you is a memory written in gold.",
+    "Our love grows stronger through every storm.",
+    "You are my safe place, Ammu."
+  ]);
+});
+
+document.getElementById('next-btn-4').addEventListener('click', () => { 
+  currentStep = 4; showStep(currentStep);
+  fadeQuotes('step5', [
+    "Happy Birthday to my everything ❤️",
+    "May Allah always keep us together forever.",
+    "You complete my duniya and akhirah."
+  ]);
+});
+
+// Confetti button (only if birthday is unlocked)
+if (checkBirthday()) {
+  document.getElementById('confetti-btn').addEventListener('click', () => {
+    confetti({ 
+      particleCount: 150, 
+      spread: 100, 
+      origin: { y: 0.6 },
+      colors: ['#ff69b4', '#ff1493', '#ffd700', '#ffb6c1']
+    });
+  });
+}
+</script>
+</body>
+</html> 
