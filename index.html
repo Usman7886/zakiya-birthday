@@ -347,7 +347,7 @@
         <div class="special-message">
           "In the name of Allah, the Most Gracious, the Most Merciful"
         </div>
-        <p class="text-xl mb-8">I've created something very special just for you, my dearest...</p>
+        <p class="text-xl mb-8">I've created something very special just for you, my darling Ammu...</p>
         <button class="btn" id="start-btn">Begin Our Journey ❤️</button>
       </div>
 
@@ -355,6 +355,9 @@
       <div class="step" id="step2">
         <div class="emoji">🎂</div>
         <h2 class="text-4xl font-bold mb-8 text-gradient">Happy Birthday My Beloved!</h2>
+        <div class="special-message mb-4">
+          To my sweetie, cutie, darling, honey, zak zak zilla 😁, boom boom 💥, petray, gori, zaki jalebi 🥨😁, luv u re Ammu! 💕
+        </div>
         <div class="rotating-quote text-xl mb-6"></div>
         <button class="btn" id="next-btn-2">Continue Our Love Story 💕</button>
       </div>
@@ -442,10 +445,10 @@
           <div class="arabic-text">
             فَإِنَّ مَعَ الْعُسْرِ يُسْرًا
           </div>
-          <p class="mt-4">Through every challenge, your love has been my strength, Ammu.</p>
+          <p class="mt-4">Through every challenge, your love has been my strength, my darling Ammu.</p>
         </div>
         <div class="blessing-text mt-6">
-          "May Allah continue to bless our love and keep us together always"
+          "May Allah continue to bless our love and keep us together always, my honey! 💕"
         </div>
         <button class="btn" id="next-btn-4">Your Special Surprise 🎁</button>
       </div>
@@ -454,8 +457,17 @@
       <div class="step" id="step5">
         <div id="birthday-content" style="display: none;">
           <div class="emoji">🎂</div>
-          <h2 class="text-4xl font-bold mb-8 text-gradient">Happy Birthday Zakiya ❤️</h2>
-          <div class="special-message rotating-quote"></div>
+          <h2 class="text-4xl font-bold mb-8 text-gradient">Happy Birthday Ammu ❤️</h2>
+          <div class="special-message mb-6">
+            Once again happy birthday Ammu! 😘😘😘😘🥰🥰🥰
+          </div>
+          <div class="blessing-text mb-4">
+            May Allah give everything you deserve, Ameen! And also may Allah give what you want, Ameen! 🙏
+          </div>
+          <div class="special-message mb-6">
+            Be happy always, my darling! 💕
+          </div>
+          <div class="rotating-quote mb-6"></div>
           <button class="btn" id="confetti-btn">Celebrate Our Love! 🎉</button>
         </div>
         <div id="locked-content">
@@ -496,7 +508,7 @@
 <script>
 // Birthday check logic
 function checkBirthday() {
-  const birthday = new Date('2025-08-16');
+  const birthday = new Date('2024-12-01'); // Temporary change for testing
   const today = new Date();
   return today >= birthday;
 }
@@ -643,7 +655,7 @@ if (checkBirthday()) {
 
 // Countdown timer function
 function startCountdown() {
-  const birthday = new Date('2025-08-16T00:00:00');
+  const birthday = new Date('2024-12-01T00:00:00'); // Temporary change for testing
   
   function updateCountdown() {
     const now = new Date();
@@ -671,15 +683,15 @@ function startCountdown() {
   setInterval(updateCountdown, 1000);
 }
 
-typeWriter(document.querySelector('#intro-text'), "My beloved, my heart's treasure...");
+typeWriter(document.querySelector('#intro-text'), "My beloved Ammu, my heart's treasure, my darling...");
 
 document.getElementById('start-btn').addEventListener('click', () => {
   addFloatingHearts();
   currentStep = 1; showStep(currentStep);
   fadeQuotes('step2', [
-    "Every day with you is a gift from Allah.",
+    "Every day with you is a gift from Allah, my darling!",
     "You are my answered dua, my beloved Ammu.",
-    "Alhamdulillah for you."
+    "Alhamdulillah for you, my sweetie! 💕"
   ]);
 });
 
@@ -690,9 +702,9 @@ document.getElementById('next-btn-2').addEventListener('click', () => {
 document.getElementById('next-btn-3').addEventListener('click', () => { 
   currentStep = 3; showStep(currentStep); 
   fadeQuotes('step4', [
-    "Every moment with you is a memory written in gold.",
-    "Our love grows stronger through every storm.",
-    "You are my safe place, Ammu."
+    "Every moment with you is a memory written in gold, my cutie!",
+    "Our love grows stronger through every storm, my darling!",
+    "You are my safe place, Ammu, my honey! 💕"
   ]);
 });
 
@@ -700,8 +712,10 @@ document.getElementById('next-btn-4').addEventListener('click', () => {
   currentStep = 4; showStep(currentStep);
   fadeQuotes('step5', [
     "Happy Birthday to my everything ❤️",
-    "May Allah always keep us together forever.",
-    "You complete my duniya and akhirah."
+    "May Allah always keep us together forever, my darling!",
+    "You complete my duniya and akhirah, my sweetie! 💕",
+    "Ummahhhhh! 😘😘😘😘😘😘😘😘",
+    "Luv u re Ammu! 💕"
   ]);
 });
 
